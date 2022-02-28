@@ -54,7 +54,7 @@
 
 jenkins、travis 自动化构建工具比较成熟了，为什么还要自研脚手架？
 
--   不满足需求，jenkins、travis 通常在 git hooks 中处罚,需要在服务器上执行，无法覆盖本地开发。
+-   不满足需求，jenkins、travis 通常在 git hooks 中触发,需要在服务器上执行，无法覆盖本地开发。
 -   定制复杂，定制过程需要开发插件，过程较为复杂，需要使用 java, 对前端不太友好。
 
 脚手架本质是一个操作系统的客户端，通过命令行执行。实际上主要是由于 node 是客户端，编写的文件通过 node 去执行。
@@ -135,70 +135,3 @@ unlink 的流程：
 ## 脚手架命令注册与参数解析
 
 通过解析 process.env.argv 来实现。
-
-## lerna
-
-原生脚手架开发痛点
-
--   重复操作
-    -   多 package 管理
-        -   link
-        -   安装
-        -   测试
-        -   代码提交
-        -   发布
--   版本一致性
-    -   发布时版本一致性
-    -   发布后相互依赖版本升级
-
-lerna 是一个基于 git + npm 的多 package 项目的管理工具
-
-优势：
-
--   大幅减少重复操作
--   提升操作的标准化
-
-lerna 是架构优化的产物，项目复杂度提升后，就需要对项目进行架构优化。架构优化的主要目标就是效能。
-
--   脚手架项目初始化
-    -   初始化 npm 项目
-    -   安装 lerna
-    -   lerna init 初始化项目
--   创建 package
-    -   lerna create 创建 package
-    -   lerna add 安装依赖
-    -   lerna link 链接依赖, 需要在 package.json 里添加依赖的包
--   脚手架开发和测试
-    -   lerna exec 执行 shell 脚本
-    -   lerna run 执行 npm 命令
-    -   lerna clean 清空依赖
-    -   lerna bootstrap 重装依赖
--   脚手架发布和上线
-    -   lerna version 升级版本号
-    -   lerna changed 查看修改过的包
-    -   lerna diff 查看变更
-    -   lerna publish
-
-```
-lerna add xx # 给所有包安装依赖
-lerna add xx --scope=package_paths # 给某个包安装依赖
-
-lerna clean 删除所有包的依赖，会删除所有的 package/**/node_modules
-
-lerna link 给依赖添加软链接，先在 package.json 里添加依赖
-
-# 在每个 package 下 执行 shell 脚本
-lerna exec `rm -rf ./node_modules`
-lerna exec --scope package_name
-
-# 执行每个 package 下的 npm 脚本
-lerna run
-lerna run --scope package_name
-```
-
-
-dedent 可以删除每行前后的缩进, 每行删除的长度一样
-
-
-nvm安装node太慢,更换淘宝镜像源
-https://blog.urcloud.co/archives/105
