@@ -60,8 +60,10 @@ lerna 是架构优化的产物，项目复杂度提升后，就需要对项目�
 
 - lerna version 升级版本号，需要首先进行 git commit 
 - lerna changed 查看修改过的包
-- lerna diff 查看变更，从上次 release 后的变更。
-- lerna publish
+- lerna diff 查看变更，从上次 commit 后的变更。
+- lerna publish 会发布变更后的包，即 changed 了的包。
+
+- [图解lerna publish](https://zhuanlan.zhihu.com/p/372889162)
 
 ```
 lerna add xx # 给所有包安装依赖
