@@ -1,6 +1,6 @@
 {
   "name": "@v-cli/core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "> TODO: description",
   "author": "banli17 <867889876@qq.com>",
   "homepage": "",
@@ -27,6 +27,6 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@v-cli/utils": "^0.0.1"
+    "@v-cli/utils": "^0.0.2"
   }
 }
