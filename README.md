@@ -129,7 +129,11 @@ test-v-lib
 /Users/banli/Desktop/learn/engineering/cli/test-v-cli/node_modules/test-v-lib -> /Users/banli/.nvm/versions/node/v14.16.0/lib/node_modules/test-v-lib -> /Users/banli/Desktop/learn/engineering/cli/test-v-lib
 ```
 
-注意 npm link 可以链接命令和包。
+npm link (directory)做了什么:
+
+1. 会安装依赖
+2. 会在 node 目录的 bin 目录下生成命令链接
+3. 会在 node 目录的 lib 目录生产软连接 
 
 unlink 的流程：
 
@@ -142,3 +146,63 @@ unlink 的流程：
 ## 脚手架命令注册与参数解析
 
 通过解析 process.env.argv 来实现。
+
+
+## 3、脚手架核心流程开发
+### 3-1、脚手架拆包策略
+
+- 核心流程 core
+  - 准备阶段
+  - 命令注册
+  - 命令执行
+- 命令 commands
+  - 初始化
+  - 发布
+  - 清除缓存
+- 模型层 models
+  - Command 命令
+	- Project 项目
+	- Component 组件
+	- Npm 模块
+	- Git 仓库
+- utils
+  - Git 操作
+  - 云构建
+  - 工具方法
+  - API 请求
+  - Git API
+
+### 3-2、core模块技术方案
+
+命令执行流程
+- 准备阶段
+- 命令注册
+- 命令执行
+
+**涉及技术点**
+
+核心库
+
+- import-local
+- Commander
+
+工具库
+
+- npmlog 打印日志
+- fs-extra 文件操作
+- semver 版本检查
+- colors 打印彩色文字
+- user-home 获取用户主目录
+- dotenv 获取环境变量
+- root-check root检查和降级
+
+**node 能识别的文件**
+- .js 
+- .json -> JSON.parse
+- .node -> dlopen
+- 其他文件后缀 -> 只会当作 .js 进行解析, 如果解析失败会报错，比如 readme 里写 js 代码, 是可以的。不会尝试当 json 解析
+
+```js
+const a = require('../a.txt')
+console.log(a) // object {} 是 module.exports 对象
+```
