@@ -1,7 +1,7 @@
 {
-  "name": "@v-cli/log",
+  "name": "@v-cli/get-npm-info",
   "version": "0.0.2",
-  "description": "log",
+  "description": "> TODO: description",
   "author": "banli17 <867889876@qq.com>",
   "homepage": "https://github.com/banli17/course-cli#readme",
   "license": "MIT",
@@ -13,7 +13,9 @@
   "files": [
     "lib"
   ],
-  "publishConfig": {},
+  "publishConfig": {
+    "registry": "https://registry.npmmirror.com/"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/banli17/course-cli.git"
@@ -25,6 +27,8 @@
     "url": "https://github.com/banli17/course-cli/issues"
   },
   "dependencies": {
-    "npmlog": "^6.0.2"
+    "axios": "^0.27.2",
+    "semver": "^7.3.7",
+    "url-join": "4"
   }
 }

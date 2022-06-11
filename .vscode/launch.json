@@ -11,7 +11,7 @@
 			"skipFiles": [
 				"<node_internals>/**"
 			],
-			"program": "/Users/banli/.nvm/versions/node/v14.18.1/bin/lerna"
+			"program": "/Users/banli/.nvm/versions/node/v14.18.1/bin/v"
 		}
 	]
 }

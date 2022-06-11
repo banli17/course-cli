@@ -16,8 +16,5 @@
   "devDependencies": {
     "lerna": "^4.0.0"
   },
-  "dependencies": {
-    "dedent": "^0.7.0",
-    "yargs": "^17.2.1"
-  }
+  "dependencies": {}
 }
