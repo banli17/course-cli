@@ -13,7 +13,9 @@
   "files": [
     "lib"
   ],
-  "publishConfig": {},
+  "publishConfig": {
+		"access": "public"
+	},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/banli17/course-cli.git"
@@ -27,6 +29,5 @@
   "dependencies": {
     "npmlog": "^6.0.2"
   },
-  "gitHead": "ad6054b7dcf82a7a9f3c6d49733796a8394c187d",
-  "private": true
+  "gitHead": "ad6054b7dcf82a7a9f3c6d49733796a8394c187d"
 }

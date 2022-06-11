@@ -20,7 +20,7 @@ function getNpmInfo(npmName, registry) {
 			return null
 		}
 	}).catch(err => {
-		return Promise.reject(err)
+		return Promise.reject(err.response.data)
 	})
 }
 
@@ -28,6 +28,10 @@ function getDefaultRegistry(isOriginal = false) {
 	return isOriginal ? 'https//registry.npmjs.org' : 'https://registry.npm.taobao.org'
 }
 
+async function getNpmVersions(npmName, registry) {
+	const npmInfo = await getNpmInfo(npmName, registry)
+	return npmInfo && npmInfo.versions
+}
 
 module.exports = {
 	getNpmInfo
