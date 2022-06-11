@@ -25,8 +25,8 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@v-cli/get-npm-info": "^1.0.1",
-    "@v-cli/log": "^1.0.1",
+    "@v-cli/get-npm-info": "^1.0.2",
+    "@v-cli/log": "^1.0.2",
     "colors": "^1.4.0",
     "dotenv": "^16.0.1",
     "fs-extra": "^10.1.0",
