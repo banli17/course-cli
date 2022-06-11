@@ -11,7 +11,7 @@ const userHome = require('user-home')
 const pathExists = require('path-exists').sync
 const fs = require('fs-extra');
 const {
-	getNpmInfo
+	getNpmSemverVersion
 } = require('@v-cli/get-npm-info');
 
 function core() {
@@ -122,10 +122,10 @@ async function checkGlobalUpdate() {
 	const npmName = pkg.name
 	// 2. 调用 npm API, 获取所有版本号
 	try {
-		const res = await getNpmInfo(npmName)
-		console.log(res.message)
+		const res = await getNpmSemverVersion(currentVersion, npmName)
+		console.log(res)
 	} catch (e) {
-		log.error('ggg', e.error)
+		log.error('ggg', e)
 	}
 	// 3. 提取所有版本号，比对哪些版本号大于当前版本号
 	// 4. 获取最新的版本号, 提示用于更新到该版本
