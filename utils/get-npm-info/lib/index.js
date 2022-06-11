@@ -14,6 +14,13 @@ function getNpmInfo(npmName, registry) {
 	console.log(npmInfoUrl);
 	return axios.get(npmInfoUrl).then(response => {
 		console.log(response)
+		if (response.status === 200) {
+			return response.data
+		} else {
+			return null
+		}
+	}).catch(err => {
+		return Promise.reject(err)
 	})
 }
 
