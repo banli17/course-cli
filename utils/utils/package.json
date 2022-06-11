@@ -1,6 +1,6 @@
 {
   "name": "@v-cli/utils",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "> TODO: description",
   "author": "banli17 <867889876@qq.com>",
   "homepage": "",
@@ -13,8 +13,7 @@
   "files": [
     "lib"
   ],
-  "publishConfig": {
-  },
+  "publishConfig": {},
   "repository": {
     "type": "git",
     "url": "git@gitee.com:banli17/v-cli.git"
