@@ -1,6 +1,6 @@
 {
   "name": "@v-cli/log",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "log",
   "author": "banli17 <867889876@qq.com>",
   "homepage": "https://github.com/banli17/course-cli#readme",
@@ -28,5 +28,5 @@
     "npmlog": "^6.0.2"
   },
   "gitHead": "ad6054b7dcf82a7a9f3c6d49733796a8394c187d",
-	"private": true
+  "private": true
 }
