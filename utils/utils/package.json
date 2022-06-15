@@ -6,6 +6,9 @@
   "homepage": "",
   "license": "MIT",
   "main": "lib/index.js",
+  "bin": {
+    "test_v1": "lib/index.js"
+  },
   "directories": {
     "lib": "lib",
     "test": "__tests__"
