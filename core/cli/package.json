@@ -1,0 +1,53 @@
+{
+  "name": "@v-cli/core",
+  "version": "1.0.8",
+  "description": "> TODO: description",
+  "author": "banli17 <867889876@qq.com>",
+  "homepage": "",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "bin": {
+    "v": "./bin/v.js",
+    "v_c": "./bin/test_commander.js"
+  },
+  "directories": {
+    "lib": "lib",
+    "dist": "dist",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitee.com:banli17/v-cli.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "dependencies": {
+    "@v-cli/get-npm-info": "file:../../utils/get-npm-info",
+    "@v-cli/log": "file:../../utils/log",
+    "@v-cli/init": "file:../../commands/init",
+    "@v-cli/exec": "file:../exec",
+    "colors": "^1.4.0",
+    "commander": "^9.3.0",
+    "dotenv": "^16.0.1",
+    "fs-extra": "^10.1.0",
+    "import-local": "^2.0.0",
+    "lodash": "^4.0.0",
+    "minimist": "^1.2.6",
+    "npmlog": "^6.0.2",
+    "path-exists": "^4.0.0",
+    "root-check": "^1.0.0",
+    "semver": "^7.3.7",
+    "user-home": "^3.0.0"
+  },
+  "engines": {
+    "node": "12.0.0"
+  },
+  "gitHead": "4b4eb867ad6115c615e26e896daf07b5770c8b25"
+}

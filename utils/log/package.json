@@ -1,0 +1,33 @@
+{
+  "name": "@v-cli/log",
+  "version": "1.0.5",
+  "description": "log",
+  "author": "banli17 <867889876@qq.com>",
+  "homepage": "https://github.com/banli17/course-cli#readme",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/banli17/course-cli.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/banli17/course-cli/issues"
+  },
+  "dependencies": {
+    "npmlog": "^6.0.2"
+  },
+  "gitHead": "4b4eb867ad6115c615e26e896daf07b5770c8b25"
+}
