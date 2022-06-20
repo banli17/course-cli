@@ -14,7 +14,7 @@
     "lib"
   ],
   "publishConfig": {
-		"access": "public"
+    "access": "public"
   },
   "repository": {
     "type": "git",
@@ -25,5 +25,8 @@
   },
   "bugs": {
     "url": "https://github.com/banli17/course-cli/issues"
+  },
+  "dependencies": {
+    "@v-cli/utils": "file:../../utils/utils"
   }
 }
