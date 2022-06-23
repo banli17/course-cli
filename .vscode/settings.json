@@ -29,5 +29,6 @@
   "vim.handleKeys": {
     "<C-a>": false,
     "<C-f>": false
-  }
+  },
+  "compile-hero.disable-compile-files-on-did-save-code": false
 }

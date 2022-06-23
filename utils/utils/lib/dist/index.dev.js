@@ -1,8 +1,8 @@
 "use strict";
 
-const utils = {};
+var utils = {};
 
-utils.isObject = (obj) => {
+utils.isObject = function (obj) {
   return Object.prototype.toString.call(obj) === "[object Object]";
 };
 
