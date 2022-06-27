@@ -18,7 +18,7 @@
       "type": "pwa-node",
       "request": "launch",
       "name": "Launch Program",
-      "skipFiles": ["<node_internals>/**"],
+      "skipFiles": ["<node_internals>/**"], // 是否跳过 node 内部代码
       "program": "${workspaceFolder}\\bin\\create-thingjs-app", // 配置调试入口文件
       "console": "integratedTerminal", // 用于调试交互式命令, 默认是 internalConsole
       "outFiles": ["${workspaceFolder}/dist/**/*.js"]

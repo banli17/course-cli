@@ -109,7 +109,7 @@ function checkRoot() {
 function checkUserHome() {
   // 原理 os.homedir ? os.homedir : homedir -> platform
   // log.info 判断如果是函数会执行
-  // log.info(require('os').homedir())
+  log.verbose("homedir", require("os").homedir());
   if (!userHome && !pathExists(userHome)) {
     throw new Error(colors.red(`当前登录用户主目录不存在`));
   }
@@ -139,7 +139,7 @@ function checkEnv() {
   // config 不传递参数时, 默认会找 process.cwd() + '.env' 文件，不是在主目录找, 如果没有这个文件, 就会报错
   const dotenvPath = path.resolve(userHome, ".env");
   // 在 .env 写入 CLI_HOME=course-cli 后面不加;
-  log.verbose("环境变量地址", dotenvPath);
+  // log.info("环境变量地址", dotenvPath);
   if (pathExists(dotenvPath)) {
     // 将文件配置 设置到 process.env 环境变量上
     // 如 .env 里的 CLI_HOME=course-cli  会挂在 process.env.CLI_HOME 上
