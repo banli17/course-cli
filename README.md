@@ -2,19 +2,21 @@
 
 ## 目录
 
-1. [需求和架构分析](docs/01-需求和架构分析.md)
-2. [以架构师思维分析需求](docs/02-以架构师思维分析需求.md)
-3. [脚手架执行原理](docs/脚手架执行原理.md)
-4. [yargs](docs/03-yargs.md)
-5. [学习 lerna](docs/04-lerna.md)
-6. [脚手架核心流程开发](docs/08-core模块技术方案.md)
-7. [学习 commander](docs/09-commander.md)
-8. [脚手架命令注册和执行过程开发](docs/11-脚手架命令注册和执行过程开发.md)
+1. [需求和架构分析](./docs/需求和架构分析.md)
+1. [需求设计](./docs/需求设计.md)
+1. [以架构师思维分析需求](./docs/以架构师思维分析需求.md)
+1. [脚手架执行原理](./docs/脚手架执行原理.md)
+1. [yargs](./docs/yargs.md)
+1. [学习 lerna](./docs/lerna.md)
+1. [脚手架核心流程开发](./docs/core模块技术方案.md)
+1. [学习 commander](./docs/commander.md)
+1. [脚手架命令注册和执行过程开发](./docs/脚手架命令注册和执行过程开发.md)
 
 ## 附录
 
-1. [Nodejs 如何使用 ESM](docs/10-Nodejs使用ESM.md)
-2. [命令调试方法](docs/debugger.md)
+1. [Nodejs 如何使用 ESM](./docs/Nodejs使用ESM.md)
+2. [命令调试方法](./docs/debugger.md)
+
 ## 收获
 
 - 脚手架实现原理
