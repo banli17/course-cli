@@ -1,8 +1,8 @@
 {
   "name": "c",
   "exports": {
-    "require": "./index.js",
-    "import": "./esm/index.js"
+      "require": "./index.js",
+      "import": "./esm/index.js"
   },
   "scripts": {
     "start": "node -r esm ./index.js"

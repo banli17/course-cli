@@ -1,0 +1,6 @@
+{
+  "name": "use-esmodule",
+  "dependencies": {
+    "axios-retry": "^3.3.1"
+  }
+}
