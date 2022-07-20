@@ -22,7 +22,6 @@ async function core() {
 
 async function prepare() {
   checkPkgVersion();
-  checkNodeVersion();
   checkRoot();
   checkUserHome();
   // checkInputArgs()
@@ -87,19 +86,6 @@ function checkPkgVersion() {
   log.info("cli", pkg.version);
 }
 
-function checkNodeVersion() {
-  // 获取当前 Node 版本
-  const currentVersion = process.version;
-  const lowestVersion = pkg.engines.node;
-
-  log.verbose(currentVersion, lowestVersion);
-
-  if (!semver.gte(currentVersion, lowestVersion)) {
-    throw new Error(
-      colors.red(`@v-cli 需要安装 v${lowestVersion} 以上版本的 Node.js`)
-    );
-  }
-}
 
 function checkRoot() {
   const rootCheck = require("root-check");
