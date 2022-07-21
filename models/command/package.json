@@ -1,6 +1,6 @@
 {
   "name": "@v-cli/command",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "> TODO: description",
   "author": "banli17 <867889876@qq.com>",
   "homepage": "https://github.com/banli17/course-cli#readme",
@@ -30,8 +30,8 @@
     "node": "12.0.0"
   },
   "dependencies": {
+    "@v-cli/log": "file:../../utils/log",
     "colors": "^1.4.0",
-    "semver": "^7.3.7",
-    "@v-cli/log": "file:../../utils/log"
+    "semver": "^7.3.7"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@v-cli/package",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "> TODO: description",
   "author": "banli17 <867889876@qq.com>",
   "homepage": "https://github.com/banli17/course-cli#readme",
@@ -29,8 +29,8 @@
   "dependencies": {
     "@v-cli/format-path": "file:../../utils/format-path",
     "@v-cli/get-npm-info": "file:../../utils/get-npm-info",
-    "@v-cli/utils": "file:../../utils/utils",
     "@v-cli/log": "file:../../utils/log",
+    "@v-cli/utils": "file:../../utils/utils",
     "npminstall": "^6.4.0",
     "pkg-dir": "^5.0.0"
   }

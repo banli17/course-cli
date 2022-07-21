@@ -1,6 +1,6 @@
 {
   "name": "@v-cli/exec",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "> TODO: description",
   "author": "banli17 <867889876@qq.com>",
   "homepage": "https://github.com/banli17/course-cli#readme",
@@ -27,7 +27,7 @@
     "url": "https://github.com/banli17/course-cli/issues"
   },
   "dependencies": {
-    "@v-cli/package": "file:../../models/package",
-    "@v-cli/log": "file:../../utils/log"
+    "@v-cli/log": "file:../../utils/log",
+    "@v-cli/package": "file:../../models/package"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@v-cli/core",
-  "version": "1.0.8",
+  "version": "1.0.7",
   "description": "> TODO: description",
   "author": "banli17 <867889876@qq.com>",
   "homepage": "",
@@ -29,10 +29,10 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@v-cli/get-npm-info": "file:../../utils/get-npm-info",
-    "@v-cli/log": "file:../../utils/log",
-    "@v-cli/init": "file:../../commands/init",
     "@v-cli/exec": "file:../exec",
+    "@v-cli/get-npm-info": "file:../../utils/get-npm-info",
+    "@v-cli/init": "file:../../commands/init",
+    "@v-cli/log": "file:../../utils/log",
     "colors": "^1.4.0",
     "commander": "^9.3.0",
     "dotenv": "^16.0.1",
