@@ -10,6 +10,7 @@
 1. [学习 lerna](./docs/lerna.md)
 1. [脚手架核心流程开发](./docs/core模块技术方案.md)
 1. [学习 commander](./docs/commander.md)
+1. [学习 Inquirer.js](https://github.com/SBoudrias/Inquirer.js)
 1. [脚手架命令注册和执行过程开发](./docs/脚手架命令注册和执行过程开发.md)
 
 ## 附录
@@ -102,3 +103,8 @@ jenkins、travis 自动化构建工具比较成熟了，为什么还要自研脚
   - 工具方法
   - API 请求
   - Git API
+
+
+```
+v init --debug test-project
+```

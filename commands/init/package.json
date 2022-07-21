@@ -27,6 +27,7 @@
     "url": "https://github.com/banli17/course-cli/issues"
   },
   "dependencies": {
-    "@v-cli/command": "file:../../models/command"
+    "@v-cli/command": "file:../../models/command",
+    "@v-cli/log": "file:../../utils/log"
   }
 }

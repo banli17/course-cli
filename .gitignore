@@ -81,3 +81,5 @@ typings/
 
 .idea/
 .vscode/
+
+test/
