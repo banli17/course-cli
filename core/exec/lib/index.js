@@ -61,6 +61,7 @@ async function exec() {
       const args = Array.from(arguments).slice(0, -1);
       const originCmd = arguments[arguments.length - 1];
       // console.log(cmd.name());
+
       const cmd = args[args.length - 1];
       cmd.cmdName = originCmd.name();
 
@@ -75,7 +76,7 @@ async function exec() {
         process.exit(1);
       });
       child.on("exit", (e) => {
-        log.verbose(`命令执行成功`);
+        log.verbose(`命令执行成功了`);
       });
 
       // stdio: 'pipe' 时
