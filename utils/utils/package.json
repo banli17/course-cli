@@ -26,5 +26,10 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
-  "gitHead": "4b4eb867ad6115c615e26e896daf07b5770c8b25"
+  "gitHead": "4b4eb867ad6115c615e26e896daf07b5770c8b25",
+  "dependencies": {
+    "cli-spinner": "^0.2.10",
+    "ora": "^5.4.1",
+    "spinners": "^1.2.2"
+  }
 }

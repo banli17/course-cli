@@ -1,6 +1,6 @@
 {
-  "name": "@v-cli/init",
-  "version": "1.0.7",
+  "name": "@v-cli/request",
+  "version": "1.0.8",
   "description": "> TODO: description",
   "author": "banli17 <867889876@qq.com>",
   "homepage": "https://github.com/banli17/course-cli#readme",
@@ -14,7 +14,7 @@
     "lib"
   ],
   "publishConfig": {
-    "access": "public"
+    "registry": "https://mirrors.cloud.tencent.com/npm/"
   },
   "repository": {
     "type": "git",
@@ -27,13 +27,6 @@
     "url": "https://github.com/banli17/course-cli/issues"
   },
   "dependencies": {
-    "@v-cli/command": "file:../../models/command",
-    "@v-cli/package": "file:../../models/package",
-    "@v-cli/log": "file:../../utils/log",
-    "@v-cli/request": "file:../../utils/request",
-    "@v-cli/utils": "file:../../utils/utils",
-    "fs-extra": "^10.1.0",
-    "inquirer": "^8.2.4",
-    "semver": "^7.3.7"
+    "axios": "^0.27.2"
   }
 }

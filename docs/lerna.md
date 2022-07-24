@@ -45,7 +45,7 @@ lerna 是架构优化的产物，项目复杂度提升后，就需要对项目�
 ```
 // 语法
 lerna create <packageName> [local]
-[local] 是指 lerna.json 里 packages 配置的某一目录, 默认是第一个 
+[local] 是指 lerna.json 里 packages 配置的某一目录, 默认是第一个
 
 // 例子
 lerna create a packages2
@@ -63,7 +63,7 @@ lerna create a packages2
 
 ```
 // 语法
-lerna add <pkg> [globs..] 增加单个依赖到匹配的包
+lerna add <pkg> [globs..] 安装单个依赖到匹配的包
 ```
 
 ![](./imgs/2022-02-28-22-38-02.png)
@@ -82,7 +82,7 @@ lerna add <pkg> [globs..] 增加单个依赖到匹配的包
 
 ### 脚手架发布和上线
 
-- lerna version 升级版本号，需要首先进行 git commit 
+- lerna version 升级版本号，需要首先进行 git commit
 - lerna changed 查看修改过的包
 - lerna diff 查看变更，从上次 commit 后的变更。
 - lerna publish 会发布变更后的包，即 changed 了的包。发布后会给 github 打上 tag。
@@ -117,7 +117,7 @@ https://blog.urcloud.co/archives/105
 ## 调试
 
 1. 克隆 lerna 源码
-2. npm i 
+2. npm i
 3. 添加 vscode 调试配置文件 `.vscode/launch.json`
 
 ```json
@@ -131,7 +131,7 @@ https://blog.urcloud.co/archives/105
 			"skipFiles": [
 				"<node_internals>/**"
 			],
-			"program": "core/cli/index.js", 
+			"program": "core/cli/index.js",
       "cwd": "${workspaceFolder}",
 			"args": ["ls"]
 		}
