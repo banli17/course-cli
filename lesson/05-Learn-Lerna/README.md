@@ -86,8 +86,10 @@ lerna add <pkg> [globs..] 安装单个依赖到匹配的包
 - lerna changed 查看修改过的包
 - lerna diff 查看变更，从上次 commit 后的变更。
 - lerna publish 会发布变更后的包，即 changed 了的包。发布后会给 github 打上 tag。
+  - 如果发布失败，可以增加 from-git 参数
 
 - [图解lerna publish](https://zhuanlan.zhihu.com/p/372889162)
+- https://github.com/huruji/blog/issues/67
 
 ```
 lerna add xx # 给所有包安装依赖

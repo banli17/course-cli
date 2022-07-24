@@ -96,7 +96,7 @@ function checkUserHome() {
   // 原理 os.homedir ? os.homedir : homedir -> platform
   // log.info 判断如果是函数会执行
   log.verbose("homedir", require("os").homedir());
-  if (!userHome && !pathExists(userHome)) {
+  if (!userHome || !pathExists(userHome)) {
     throw new Error(colors.red(`当前登录用户主目录不存在`));
   }
 }

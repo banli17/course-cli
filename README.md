@@ -7,12 +7,13 @@
 1. [脚手架执行原理](lesson/03-Principle-Of-Scaffold/README.md)
 1. [学习 yargs](lesson/04-Learn-Yargs/README.md)
 1. [学习 lerna](lesson/05-Learn-Lerna/README.md)
-1. [脚手架核心流程开发](lesson/06-Scaffold-Core/README.md)
-1. [学习 commander](lesson/07-Learn-Commander)
-1. [脚手架命令注册过程开发](lesson/08-Scaffold-Command-Register/README.md)
-1. [脚手架命令执行过程开发](lesson/09-Scaffold-Command-Exec/README.md)
+1. [脚手架核心流程开发(一): 整体介绍](lesson/06-Scaffold-Core/README.md)
+1. [脚手架核心流程开发(二): 准备阶段](lesson/08-Scaffold-Command-Prepare/README.md)
+1. [学习 commander.js](lesson/07-Learn-Commander/README.md)
+1. [脚手架核心流程开发(三): 命令注册](lesson/08-Scaffold-Command-Register/README.md)
+1. [脚手架核心流程开发(四): 命令执行](lesson/09-Scaffold-Command-Exec/README.md)
 1. [脚手架创建项目流程开发](lesson/10-Scaffold-Create-Project/README.md)
-1. [学习 Inquirer.js](lesson/11-Learn-Inquirer)
+1. [学习 inquirer.js](lesson/11-Learn-Inquirer/README.md)
 1. [命令行交互原理](lesson/12-Principle-Of-CLI/README.md)
 
 ## 常用库
