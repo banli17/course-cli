@@ -1,6 +1,6 @@
 {
   "name": "@v-cli/init",
-  "version": "1.0.7",
+  "version": "1.1.0",
   "description": "> TODO: description",
   "author": "banli17 <867889876@qq.com>",
   "homepage": "https://github.com/banli17/course-cli#readme",
@@ -28,8 +28,8 @@
   },
   "dependencies": {
     "@v-cli/command": "file:../../models/command",
-    "@v-cli/package": "file:../../models/package",
     "@v-cli/log": "file:../../utils/log",
+    "@v-cli/package": "file:../../models/package",
     "@v-cli/request": "file:../../utils/request",
     "@v-cli/utils": "file:../../utils/utils",
     "fs-extra": "^10.1.0",
