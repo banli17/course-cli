@@ -42,6 +42,7 @@ $ ./plunder.js --ships 12 --distance 98.7
 Retreat from the xupptumblers!
 ```
 
+> hideBin 会返回 process.argv.slice(2)
 ## 完整使用
 
 ```js
