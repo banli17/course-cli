@@ -2,21 +2,21 @@
 
 ## 目录
 
-1. [需求和架构分析](./docs/需求和架构分析.md)
-1. [需求设计](./docs/需求设计.md)
-1. [以架构师思维分析需求](./docs/以架构师思维分析需求.md)
-1. [脚手架执行原理](./docs/脚手架执行原理.md)
-1. [yargs](./docs/yargs.md)
-1. [学习 lerna](./docs/lerna.md)
-1. [脚手架核心流程开发](./docs/core模块技术方案.md)
-1. [学习 commander](./docs/commander.md)
+1. [整体需求和架构分析](docs/需求和架构分析.md)
+1. [需求设计](docs/需求设计.md)
+1. [以架构师思维分析需求](docs/以架构师思维分析需求.md)
+1. [脚手架执行原理](docs/脚手架执行原理.md)
+1. [yargs](docs/yargs.md)
+1. [学习 lerna](docs/lerna.md)
+1. [脚手架核心流程开发](docs/core模块技术方案.md)
+1. [学习 commander](docs/commander.md)
 1. [学习 Inquirer.js](https://github.com/SBoudrias/Inquirer.js)
-1. [脚手架命令注册和执行过程开发](./docs/脚手架命令注册和执行过程开发.md)
-
+1. [脚手架命令注册和执行过程开发](docs/脚手架命令注册和执行过程开发.md)
+1. [命令行交互原理.md](docs/命令行交互原理.md)
 ## 附录
 
-1. [Nodejs 如何使用 ESM](./docs/Nodejs使用ESM.md)
-2. [命令调试方法](./docs/debugger.md)
+1. [Nodejs 如何使用 ESM](docs/Nodejs使用ESM.md)
+2. [命令调试方法](docs/debugger.md)
 
 ## 收获
 

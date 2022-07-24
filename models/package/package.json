@@ -27,11 +27,12 @@
     "url": "https://github.com/banli17/course-cli/issues"
   },
   "dependencies": {
-    "@v-cli/format-path": "file:../../utils/format-path",
-    "@v-cli/get-npm-info": "file:../../utils/get-npm-info",
-    "@v-cli/log": "file:../../utils/log",
-    "@v-cli/utils": "file:../../utils/utils",
+    "@v-cli/format-path": "^1.0.7",
+    "@v-cli/get-npm-info": "^1.1.0",
+    "@v-cli/log": "^1.1.0",
+    "@v-cli/utils": "^1.1.0",
     "npminstall": "^6.4.0",
     "pkg-dir": "^5.0.0"
-  }
+  },
+  "gitHead": "bfdfc552a9c8283d6bb95fe7a5e053fd34d6379a"
 }

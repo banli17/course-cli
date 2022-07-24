@@ -29,10 +29,10 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@v-cli/exec": "file:../exec",
-    "@v-cli/get-npm-info": "file:../../utils/get-npm-info",
-    "@v-cli/init": "file:../../commands/init",
-    "@v-cli/log": "file:../../utils/log",
+    "@v-cli/exec": "^1.1.0",
+    "@v-cli/get-npm-info": "^1.1.0",
+    "@v-cli/init": "^1.1.0",
+    "@v-cli/log": "^1.1.0",
     "colors": "^1.4.0",
     "commander": "^9.3.0",
     "dotenv": "^16.0.1",
@@ -49,5 +49,5 @@
   "engines": {
     "node": "12.0.0"
   },
-  "gitHead": "4b4eb867ad6115c615e26e896daf07b5770c8b25"
+  "gitHead": "bfdfc552a9c8283d6bb95fe7a5e053fd34d6379a"
 }

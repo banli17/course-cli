@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "yargs.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,8 +11,10 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "ansi-escapes": "^4.3.2",
     "cli-spinner": "^0.2.10",
     "cli-spinners": "^2.6.1",
-    "ora": "^5.4.1"
+    "ora": "^5.4.1",
+    "rxjs": "^7.5.6"
   }
 }

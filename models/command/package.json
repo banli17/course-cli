@@ -30,8 +30,9 @@
     "node": "12.0.0"
   },
   "dependencies": {
-    "@v-cli/log": "file:../../utils/log",
+    "@v-cli/log": "^1.1.0",
     "colors": "^1.4.0",
     "semver": "^7.3.7"
-  }
+  },
+  "gitHead": "bfdfc552a9c8283d6bb95fe7a5e053fd34d6379a"
 }
