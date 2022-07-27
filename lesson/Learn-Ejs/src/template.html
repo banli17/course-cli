@@ -1,0 +1,6 @@
+<% if(user) { %>
+  <% for(let i = 0; i < 5; i++) { %>
+    <div><%= user.name %> <% i %></div>
+  <% } %>
+<% } %>
+<%- include('./footer.html') %>
