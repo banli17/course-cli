@@ -68,3 +68,7 @@ ejs.cache = LRU(100); // LRU cache with 100-item limit
 
 可以使用 ejs.clearCache() 清空缓存。
 
+
+## 附录
+
+- https://ejs.co/#docs
