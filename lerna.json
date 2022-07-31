@@ -1,10 +1,4 @@
 {
-  "packages": [
-    "core/*",
-    "models/*",
-    "commands/*",
-    "utils/*",
-    "templates/*"
-  ],
+  "userWorkspace": true,
   "version": "1.1.0"
 }

@@ -1,8 +1,8 @@
 "use strict";
-const cp = require("child_process");
 const path = require("path");
 const log = require("@v-cli/log");
 const Package = require("@v-cli/package");
+const utils = require("@v-cli/utils");
 
 const SETTINGS = {
   init: "@v-cli/init",
@@ -67,7 +67,7 @@ async function exec() {
 
       const code = `require('${rootFile}').call(null, ${JSON.stringify(args)})`;
 
-      const child = spawn("node", ["-e", code], {
+      const child = utils.exec("node", ["-e", code], {
         cwd: process.cwd(),
         stdio: "inherit",
       });
@@ -86,19 +86,6 @@ async function exec() {
       log.error(e.message);
     }
   }
-}
-
-// 兼容 windows
-function spawn(command, args, options = {}) {
-  const win32 = process.platform === "win32";
-
-  const cmd = win32 ? "cmd" : command;
-  // /c 表示静默执行
-  // windows 下执行命令 cmd /c node -e xx
-  const cmdArgs = win32 ? ["/c"].concat(command, args) : args;
-  // [1].concat(2, [3, 4]) -> [1, 2, 3, 4]
-
-  return cp.spawn(cmd, cmdArgs, options);
 }
 
 module.exports = exec;

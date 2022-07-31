@@ -28,7 +28,8 @@
   },
   "dependencies": {
     "@v-cli/log": "^1.1.0",
-    "@v-cli/package": "^1.1.0"
+    "@v-cli/package": "^1.1.0",
+    "@v-cli/utils": "^1.1.0"
   },
   "gitHead": "bfdfc552a9c8283d6bb95fe7a5e053fd34d6379a"
 }

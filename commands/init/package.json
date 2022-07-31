@@ -33,7 +33,7 @@
     "@v-cli/request": "^1.1.0",
     "@v-cli/utils": "^1.1.0",
     "fs-extra": "^10.1.0",
-    "inquirer": "^8.2.4",
+    "inquirer": "^7.3.3",
     "semver": "^7.3.7"
   },
   "gitHead": "bfdfc552a9c8283d6bb95fe7a5e053fd34d6379a"

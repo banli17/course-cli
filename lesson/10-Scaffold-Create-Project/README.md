@@ -29,3 +29,7 @@
 ```
 
 cli-spinners
+
+## installTemplate
+
+

@@ -17,6 +17,8 @@ log.addLevel('strong', 3000, {
 	bell: true
 })
 
+log.addLevel('success', 2000, { fg: 'green', bold: true }); // 添加自定义命令
+
 // log.info('cli', 'hello')
 // log.verbose('cli', 'debug')
 // log.strong('cli', 'this is a strong font!')

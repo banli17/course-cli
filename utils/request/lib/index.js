@@ -23,10 +23,14 @@ request = () => {
     {
       name: "vue2.0模版",
       npmName: "vue",
+      version: "1.0.0",
+      installCommand: "npm i",
+      startCommand: "npm run start",
     },
     {
       name: "react模版",
       npmName: "react", // 这里模版是发布成了 npm 包
+      version: "1.0.0",
     },
   ];
 };

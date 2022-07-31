@@ -72,3 +72,18 @@ ejs.cache = LRU(100); // LRU cache with 100-item limit
 ## 附录
 
 - https://ejs.co/#docs
+
+
+## 原理
+
+1. new Template
+2. compile()
+   1. this.generateSource()
+      1. var matches = this.parseTemplateText();
+      2. matches.forEach -> this.scanLine(line)
+      3. 拼接 this.source +=， 这里会设置 this.mode
+         1. 字符串就用 _addOutput 拼接 '__append("'+`<div>`+'")'
+         2. 如果 mode 是 <%= (escape) 就拼接 __append(user.name)
+3. 拼接完整的 with code
+4. fn = new ctor(opts.localsName + ', escapeFn, include, rethrow', src); ctor 就是 Function
+

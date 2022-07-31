@@ -2,7 +2,7 @@
 
 ## Nodejs 中使用 ES6
 
-### 方式一：使用 webpack
+### 方式一：使用 webpack 或 ts 等工具
 
 ```js
 module.exports = {

@@ -32,6 +32,7 @@
     "@v-cli/log": "^1.1.0",
     "@v-cli/utils": "^1.1.0",
     "npminstall": "^6.4.0",
+    "path-exists": "^4.0.0",
     "pkg-dir": "^5.0.0"
   },
   "gitHead": "bfdfc552a9c8283d6bb95fe7a5e053fd34d6379a"
