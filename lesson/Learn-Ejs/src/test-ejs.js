@@ -7,6 +7,7 @@ const data = {
 };
 
 const compileFn = ejs.compile(`<div><%= user.name %></div>`);
+// console.log(compileFn.toString())
 
 const res = compileFn(data)
 
