@@ -68,6 +68,46 @@ vue create test --force --no-git
 
 1. 在 mac 上可以通过 ln -s 创建软链接
 
+<<<<<<< HEAD
 ```
 ln -s xx/vue.js /usr/bin/vue
 ```
+=======
+如果报错可以直接删除 node_modules 下的 test-v-lib。
+
+
+windows 下是会编译出三个文件
+
+vue
+vue.cmd
+vue.ps1 powershell
+
+会去执行 C:\Users\Admin\AppData\Roaming\npm 下的 node_modules\@vue\cli\bin\vue.js
+
+```
+# vue.cmd
+@ECHO off
+SETLOCAL
+CALL :find_dp0
+
+IF EXIST "%dp0%\node.exe" (
+  SET "_prog=%dp0%\node.exe"
+) ELSE (
+  SET "_prog=node"
+  SET PATHEXT=%PATHEXT:;.JS;=;%
+)
+
+"%_prog%"  "%dp0%\node_modules\@vue\cli\bin\vue.js" %*
+ENDLOCAL
+EXIT /b %errorlevel%
+:find_dp0
+SET dp0=%~dp0
+EXIT /b
+
+```
+
+
+https://unix.stackexchange.com/questions/29608/why-is-it-better-to-use-usr-bin-env-name-instead-of-path-to-name-as-my
+
+https://www.baeldung.com/linux/bash-shebang-lines#:~:text=As%20we%20mentioned%20earlier%2C%23!%2F,commands%20with%20the%20defined%20interpreter.
+>>>>>>> 525892bef7e15e22e6f6512811d7f7c0ed90dc2b
