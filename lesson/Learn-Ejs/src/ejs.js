@@ -5,6 +5,7 @@ class Template {
     EVAL: "eval",
     ESCAPED: "escaped",
   };
+
   constructor(html, options) {
     this.source = "";
     this.html = html;
