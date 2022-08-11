@@ -38,11 +38,11 @@ vue create test
 ![](imgs/2022-07-30-15-33-24.png)
 ![](imgs/2022-07-30-15-40-20.png)
 
-2. vue.js 第一行内容是 `#!/usr/bin/env node`, 它告诉系统在执行文件时, 到环境变量 env 里去寻找 node 命令，然后执行，即 `node vue.js`。
+2. vue.js 第一行内容是 `#!/usr/bin/env node`, 它称为 `shebang`, 它告诉系统在执行文件时, 到环境变量 env 里去寻找 node 命令，然后执行，即 `node vue.js`。
 
 ![](imgs/2022-07-30-15-31-48.png)
 
-注意: 不能写成本机 node 程序地址, 如`#!/usr/bin/node`，这样在其他人电脑上可能就不存在。
+注意: 不能写成本机 node 程序地址, 如`#!/usr/bin/node`，不是所有的操作系统 bin 目录里都有 node，但是所有的操作系统都有 env。
 
 3. 执行完脚本后，退出。
 
@@ -68,11 +68,10 @@ vue create test --force --no-git
 
 1. 在 mac 上可以通过 ln -s 创建软链接
 
-<<<<<<< HEAD
 ```
 ln -s xx/vue.js /usr/bin/vue
 ```
-=======
+
 如果报错可以直接删除 node_modules 下的 test-v-lib。
 
 
@@ -110,4 +109,3 @@ EXIT /b
 https://unix.stackexchange.com/questions/29608/why-is-it-better-to-use-usr-bin-env-name-instead-of-path-to-name-as-my
 
 https://www.baeldung.com/linux/bash-shebang-lines#:~:text=As%20we%20mentioned%20earlier%2C%23!%2F,commands%20with%20the%20defined%20interpreter.
->>>>>>> 525892bef7e15e22e6f6512811d7f7c0ed90dc2b
