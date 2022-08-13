@@ -27,7 +27,7 @@
     "url": "https://github.com/banli17/course-cli/issues"
   },
   "engines": {
-    "node": "12.0.0"
+    "node": "^12.0.0 || >= 14.0.0"
   },
   "dependencies": {
     "@v-cli/log": "^1.1.0",

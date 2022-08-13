@@ -11,6 +11,10 @@ const commander = require("commander");
 const init = require("@v-cli/init");
 const exec = require("@v-cli/exec");
 
+process.on("unhandledRejection", (e) => {
+  console.log(e)
+});
+
 async function core() {
   try {
     await prepare();
@@ -85,7 +89,6 @@ function registerCommand() {
 function checkPkgVersion() {
   log.info("cli", pkg.version);
 }
-
 
 function checkRoot() {
   const rootCheck = require("root-check");

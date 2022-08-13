@@ -113,6 +113,9 @@ class InitCommand extends Command {
 
     const npmExist = await templateNpm.exists();
 
+
+
+    log.verbose('xxxxxx')
     let spinner;
     try {
       if (!npmExist) {

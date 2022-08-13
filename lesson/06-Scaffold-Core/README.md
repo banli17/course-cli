@@ -6,7 +6,7 @@
 - 命令注册
 - 命令执行
 
-## 准备阶段
+## 内容
 
 **涉及技术点**
 
@@ -25,58 +25,59 @@
 - dotenv 获取环境变量
 - root-check root 检查和降级
 
-**node 能识别的文件**
-
-- .js
-- .json -> JSON.parse
-- .node -> dlopen
-- 其他文件后缀 -> 只会当作 .js 进行解析, 如果解析失败会报错，比如 readme 里写 js 代码, 是可以的。不会尝试当 json 解析
-
-```js
-const a = require("../a.txt");
-console.log(a); // object {} 是 module.exports 对象
-```
-
 ## 准备阶段
 
 在命令的准备阶段需要做的事情如下:
 
 - import-local
-- [命令包版本号检查](#命令包版本号检查)
-- [Node 版本号检查](#Node版本号检查)
-- [Root 账户检查和自动降级](#Root账户检查和自动降级)
-- [用户主目录检查](#用户主目录检查)
-- [入参检查](#入参检查)
-- [环境变量检查](#环境变量检查)
+- 打印命令包版本号
+- Node 版本号检查
+- Root 账户检查和自动降级
+- 用户主目录检查
+- 入参检查
+- 环境变量检查
 
-### 命令包版本号检查
+### 打印命令包版本号
+
+主要用于打印客户端的版本信息。
+
+```js
+function printPkgVersion() {
+  log.info("cli", pkg.version);
+}
+```
 
 ### Node 版本号检查
+
+检查用户的 node 版本，并给出最低 node 兼容版本的提示。
 
 ```js
 function checkNodeVersion() {
   const currentVersion = process.version;
-  const lowestVersion = pkg.engines.node;
+  const allowVersion = pkg.engines.node;
 
-  log.verbose(currentVersion, lowestVersion);
-
-  if (!semver.gte(currentVersion, lowestVersion)) {
-    throw new Error(
-      colors.red(`@v-cli 需要安装 v${lowestVersion} 以上版本的 Node.js`)
-    );
+  if (!semver.satisfies(currentVersion, allowVersion)) {
+    log.error(`@v-cli 需要安装 v${allowVersion} 版本的 Node.js`);
+    process.exit(1);
   }
 }
 ```
 
 ### Root 账户检查和自动降级
 
-可以通过 process.getuid()来获取当前是否是 root 账户。
+尝试降级具有 root 权限的进程的权限，如果失败则阻止访问，这样可以阻止使用 root 执行脚本后续所带来的权限问题。
 
-如果是 0，则表示是 root 账户，如果是 501，则表示非 root 账户。
+![](imgs/2022-08-13-21-33-12.png)
 
-通过 setuid(501) 降级为普通用户。
+使用 [root-check](https://www.npmjs.com/package/root-check) 可以很简单完成这个工作。
 
-![](./imgs/2022-06-11-12-55-29.png)
+> window 系统可以忽略
+
+```js
+import rootCheck from "root-check";
+
+rootCheck();
+```
 
 **root-check 源码**
 
@@ -92,145 +93,193 @@ module.exports = function () {
 
   sudoBlock.apply(null, arguments);
 };
+```
 
-// downgrade-root
-("use strict");
-var isRoot = require("is-root");
-var defaultUid = require("default-uid");
+可以看到 root-check 是调用了两个包来实现的。
 
-module.exports = function () {
-  if (isRoot()) {
-    // setgid needs to happen before setuid to avoid EPERM
-    if (process.setgid) {
-      var gid = parseInt(process.env.SUDO_GID, 10);
-      if (gid && gid > 0) {
-        process.setgid(gid);
-      }
-    }
-    if (process.setuid) {
-      var uid = parseInt(process.env.SUDO_UID, 10) || defaultUid();
-      if (uid && uid > 0) {
-        process.setuid(uid);
-      }
-    }
-  }
-};
+- [downgrade-root](https://www.npmjs.com/package/downgrade-root) 尝试降级具有 root 权限的进程的权限
+- [sudo-block](https://github.com/sindresorhus/sudo-block) 用于阻止用户使用 sudo 权限执行命令
 
-// isRoot：重点
-export default function isRoot() {
+查看上面两个包的源码，可以学到一些知识点：
+
+1、如何判断是 root 用户。可以通过 uid 是 0 来判断
+
+```js
+// npm package: is-root
+function isRoot() {
+  // root 的 uid 是 0
   return process.getuid && process.getuid() === 0;
 }
+```
 
-// defaultUid，mac是501
-var DEFAULT_UIDS = {
+2、非 root 用户的默认 uid。
+
+```js
+// npm package: default-uid
+const DEFAULT_UIDS = {
   darwin: 501,
   freebsd: 1000,
   linux: 1000,
   sunos: 100,
 };
-module.exports = function (platform) {
-  return DEFAULT_UIDS[platform || process.platform];
-};
+
+export default function defaultUid(platform = process.platform) {
+  return DEFAULT_UIDS[platform];
+}
 ```
+
+3、如何降级 root？通过 setuid() 将 root uid 降级为普通 uid。
+
+```js
+function downgradeRoot() {
+  if (!isRoot()) {
+    return;
+  }
+
+  //...
+
+  if (process.setuid) {
+    const uid = Number.parseInt(process.env.SUDO_UID, 10) || defaultUid();
+    if (uid && uid > 0) {
+      process.setuid(uid);
+    }
+  }
+}
+```
+
+![](./imgs/2022-06-11-12-55-29.png)
 
 ### 用户主目录检查
 
-如果没有主目录就直接报错。因为后续缓存等都依赖主目录。
+检查用户主目录的目的，是为了后续能将一些缓存文件放在该目录下。
+
+通过 `os.homedir()` 可以获取到当前用户的主目录。
 
 ```js
-const userHome = require("user-home");
+import { homedir } from 'os'
 function checkUserHome() {
-  // 原理 os.homedir ? os.homedir : homedir -> platform
-  // log.info 判断如果是函数会执行
-  // log.info(require('os').homedir())
-  if (!userHome && !pathExists(userHome)) {
-    throw new Error(colors.red(`当前登录用户主目录不存在`));
+  const dir = homedir()
+  if (!dir && !pathExists(dir)) {
+    throw new Error(`当前登录用户主目录不存在`);
   }
 }
 ```
 
-**user-home 源码**
+不同系统的用户主目录格式不同。
 
-```js
-"use strict";
-var os = require("os");
+- linux 下，root 用户目录是 `/root`，普通用户目录是 `/home/用户名`
+- macOS 下，用户目录是 `/Users/用户名`
+- windows 下，用户目录是 `C:\Users\用户名`，可以通过 process.env.USERPROFILE 获得。
 
-function homedir() {
-  var env = process.env;
-  var home = env.HOME;
-  var user = env.LOGNAME || env.USER || env.LNAME || env.USERNAME;
-
-  if (process.platform === "win32") {
-    return env.USERPROFILE || env.HOMEDRIVE + env.HOMEPATH || home || null;
-  }
-
-  if (process.platform === "darwin") {
-    return home || (user ? "/Users/" + user : null);
-  }
-
-  if (process.platform === "linux") {
-    return (
-      home || (process.getuid() === 0 ? "/root" : user ? "/home/" + user : null)
-    );
-  }
-
-  return home || null;
-}
-
-module.exports = typeof os.homedir === "function" ? os.homedir : homedir;
-```
+> 通过 os.userInfo().username 获取当前用户名
 
 ### 入参检查
 
-主要目的是检查 --debug，用于随后的 log.verbose。
+在这一步主要是检查参数是否合法，不过由于后面会使用如 commander 或 cac 库来注册命令，它们都有参数检查的功能。
+
+所以在这里，只进行 --debug 的检查，用于初始化 log 级别，是否打印调试信息。
+
+参数的解析可以通过 `process.argv` 来获取。
+
+![](imgs/2022-08-13-22-27-57.png)
+
+`process.argv` 返回一个数组，第一项是 node 的路径，第二项是入口文件的路径，后面是所带的参数。
+
+有很多用于解析参数的库，如 [minimist](https://www.npmjs.com/package/minimist)、[yargs-parser](https://www.npmjs.com/package/yargs-parser) 等。
 
 **minimist**
 
-```
-require('minimest')(process.argv.slice(2))
+```js
+var argv = require('minimist')(process.argv.slice(2));
+console.log(argv);
 ```
 
-可以用 commander 进行代替。
+```sh
+$ node t.js -x 3 -y 4 -n5 -abc --beep=boop foo bar baz
+{ _: [ 'foo', 'bar', 'baz' ],
+  x: 3,
+  y: 4,
+  n: 5,
+  a: true,
+  b: true,
+  c: true,
+  beep: 'boop' }
+```
+
+可以看到，它会返回一个对象，未识别的参数会放到 key 为 `_` 的数组里。如果要传递多个值，有两种传参方式。
+
+```sh
+$ node t.js  -a 1 -a 2 -a 3
+{ _: [], a: [ 1, 2, 3 ] }
+
+# 这里不能有空格
+$ node t.js  -a={1,2,3}
+{ _: [], a: [ 1, 2, 3 ] }
+```
+
+> minimist 不能像 `node t.js -a 1 2 3` 这样传参数，这点不太方便。
 
 ### 环境变量检查
 
+一般来说，脚手架会在用户的主目录创建配置文件和目录，用来存放一些东西，比如 vue 创建的 .vuerc 和 .vue-templates 目录。
+
+![](imgs/2022-08-14-00-09-56.png)
+
+或者 npm 创建的 .npmrc 和 .npm 目录。
+
+![](imgs/2022-08-14-00-12-54.png)
+
+如果需要支持用户使用如 .env 文件来设置脚手架的配置项，可以使用 [dotenv](https://www.npmjs.com/package/dotenv) 库。
+
 dotenv 库可以将 .env 文件中的配置项加载到 process.env 对象上。
 
+比如下面 .env 文件内容：
+
+```
+NAME="zhangsan"
+PASSWORD="12"
+```
+
+会被转换为:
+
 ```js
+process.env.NAME // "zhangsan"
+process.env.PASSWORD // "12"
+```
+
+下面是检查主目录的示例代码：
+
+```js
+import dotenv from "dotenv";
+
 function checkEnv() {
-  const dotenv = require("dotenv");
-  // config 不传递参数时, 默认会找 process.cwd() + '.env' 文件，不是在主目录找, 如果没有这个文件, 就会报错
+  // 1. 检查用户主目录下的 .env 文件并解析
   const dotenvPath = path.resolve(userHome, ".env");
-  // 在 .env 写入 CLI_HOME=course-cli 后面不加;
-  log.verbose("环境变量地址", dotenvPath);
   if (pathExists(dotenvPath)) {
-    // 将文件配置 设置到 process.env 环境变量上
-    // 如 .env 里的 CLI_HOME=course-cli  会挂在 process.env.CLI_HOME 上
     dotenv.config({
-      path: dotenvPath,
+      path: dotenvPath, // 默认值为 process.cwd() + '.env'，而不是用户主目录下的 .env，如果没有这个文件, 就会报错
     });
   }
 
-  // 方案1 不好
-  // config = createDefaultConfig()
-  // log.verbose('环境变量', config) // { parsed: { CLI_HOME: 'course-cli;' } }
-
-  // 方案2
-  createDefaultConfig();
-  log.verbose("环境变量", process.env.CLI_HOME_PATH); // 缓存路径 /Users/banli/.my-v-cli
-}
-
-function createDefaultConfig() {
-  const cliConfig = {
-    home: userHome,
-  };
+  // 2. 创建默认配置
   if (process.env.CLI_HOME) {
     cliConfig.cliHome = path.join(userHome, process.env.CLI_HOME);
   } else {
-    cliConfig.cliHome = path.join(userHome.constant.DEFAULT_CLI_HOME);
+    cliConfig.cliHome = path.join(DEFAULT_CLI_HOME);
   }
-  // 对应上面方案2 直接赋值
-  process.env.CLI_HOME_PATH = cliConfig.cliHome;
-  return cliConfig;
 }
+```
+
+## 附
+
+**node 能识别的文件**
+
+- .js
+- .json -> JSON.parse
+- .node -> dlopen
+- 其他文件后缀 -> 只会当作 .js 进行解析, 如果解析失败会报错，比如 readme 里写 js 代码, 是可以的。不会尝试当 json 解析
+
+```js
+const a = require("../a.txt");
+console.log(a); // object {} 是 module.exports 对象
 ```

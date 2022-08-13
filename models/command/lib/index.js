@@ -1,6 +1,5 @@
 "use strict";
 const semver = require("semver");
-const colors = require("colors");
 const log = require("@v-cli/log");
 const pkg = require("../package.json");
 
@@ -33,17 +32,16 @@ class Command {
     this._argv = this._argv.slice(0, this._argv.length - 1);
   }
 
+  // 检查当前 Node 版本
   checkNodeVersion() {
-    // 获取当前 Node 版本
     const currentVersion = process.version;
-    const lowestVersion = pkg.engines.node;
+    const allowVersion = pkg.engines.node;
 
-    log.verbose(currentVersion, lowestVersion);
+    log.verbose(currentVersion, allowVersion);
 
-    if (!semver.gte(currentVersion, lowestVersion)) {
-      throw new Error(
-        colors.red(`@v-cli 需要安装 v${lowestVersion} 以上版本的 Node.js`)
-      );
+    if (!semver.gte(currentVersion, allowVersion)) {
+      log.error(`@v-cli 需要安装 v${allowVersion} 版本的 Node.js`);
+      process.exit(1);
     }
   }
 
