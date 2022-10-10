@@ -140,3 +140,15 @@ console.log(c);
 ```
 
 可以参考 <https://github.com/softonic/axios-retry/blob/master/package.json> 的 exports 写法。
+
+**方法三**
+
+nodejs 里使用 esm，还可使用 createRequire 方式，它是同步的。
+
+```js
+import {createRequire} from 'module'
+const require = createRequire(import.meta.url)
+
+const config = require('./config.js')
+console.log(config)
+```
